@@ -12,17 +12,17 @@ export interface Location {
 export const locations: Location[] = [
   {
     name: 'Bengkel Utama',
-    address: 'Jl. Raya Industri No. 123, Kecamatan Industri, Kota, Jawa Barat',
+    address: 'Kapuk Gg.Las',
     latitude: -6.1385729,
     longitude: 106.7609745,
-    phone: '6281234567890'
+    phone: '6281517281614'
   },
   {
     name: 'Bengkel Cabang',
-    address: 'Jl. Perindustrian No. 456, Kecamatan Sentra, Kota, Jawa Barat',
+    address: 'Jl. Pangeran Jayakarta, Mangga Dua Selatan Sawah Besar Jakarta Pusat DKI Jakarta, RT.2/RW.1, Pinangsia, Kec. Taman Sari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11180',
     latitude: -6.140384,
     longitude: 106.8211023,
-    phone: '6281234567890'
+    phone: '6281517281614'
   }
 ]
 

@@ -44,14 +44,14 @@ export const locations: Location[] = [
     address: 'Alamat lengkap lokasi 1',
     latitude: -6.9174639,  // Ganti dengan koordinat sebenarnya
     longitude: 107.6098164, // Ganti dengan koordinat sebenarnya
-    phone: '6281234567890'
+    phone: '6281517281614'
   },
   {
     name: 'Bengkel Cabang',
     address: 'Alamat lengkap lokasi 2',
     latitude: -6.9200000,  // Ganti dengan koordinat sebenarnya
     longitude: 107.6100000, // Ganti dengan koordinat sebenarnya
-    phone: '6281234567890'
+    phone: '6281517281614'
   }
 ]
 ```

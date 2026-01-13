@@ -23,7 +23,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   text: 'Chat WhatsApp Sekarang',
-  phone: '6281285692626', // Replace with actual phone number
+  phone: '6281517281614', // Replace with actual phone number
   message: 'Halo, saya tertarik dengan layanan bubut Anda.',
   large: false
 })
