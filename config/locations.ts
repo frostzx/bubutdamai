@@ -19,7 +19,7 @@ export const locations: Location[] = [
   },
   {
     name: 'Bengkel Cabang',
-    address: 'Jl. Pangeran Jayakarta, Mangga Dua Selatan Sawah Besar Jakarta Pusat DKI Jakarta, RT.2/RW.1, Pinangsia, Kec. Taman Sari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11180',
+    address: 'Jl. Pangeran Jayakarta No. 2B Belakang Gedung WORCAS GROUP Akses masuk melalui samping Gedung WORCAS GROUP (area pinggir kali) RT 001 / RW 01',
     latitude: -6.140384,
     longitude: 106.8211023,
     phone: '6281517281614'
