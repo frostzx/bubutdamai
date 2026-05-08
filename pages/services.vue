@@ -92,11 +92,13 @@ const services = [
 ]
 
 onMounted(() => {
-  // Parallax effect untuk header
+  const isDesktopParallax = window.matchMedia('(min-width: 769px)').matches
+
+  // Parallax effect untuk header (desktop only)
   const handleScroll = () => {
-    if (headerRef.value) {
+    if (isDesktopParallax && headerRef.value) {
       const scrolled = window.pageYOffset
-      const parallax = scrolled * 0.3
+      const parallax = scrolled * 0.18
       headerRef.value.style.transform = `translateY(${parallax}px)`
     }
   }
@@ -132,6 +134,35 @@ useHead({
     {
       name: 'keywords',
       content: 'jasa bubut, bubut besi, bubut stainless, bubut custom, repair komponen mesin, bengkel bubut'
+    }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://example.com/services' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        serviceType: 'Jasa Bubut Logam',
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'Bengkel Bubut Damai'
+        },
+        areaServed: 'Jakarta',
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Layanan Bubut',
+          itemListElement: services.map((item) => ({
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: item.title
+            }
+          }))
+        }
+      })
     }
   ]
 })
@@ -347,6 +378,7 @@ useHead({
 @media (max-width: 768px) {
   .page-header {
     padding: 3rem 0;
+    transform: none !important;
   }
 
   .page-header h1 {
@@ -363,6 +395,10 @@ useHead({
 
   .service-card {
     padding: 2rem;
+  }
+
+  .service-card:hover {
+    transform: none;
   }
 
   .services-cta {

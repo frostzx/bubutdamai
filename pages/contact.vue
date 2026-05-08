@@ -96,11 +96,13 @@ const contactInfo = [
 ]
 
 onMounted(() => {
-  // Parallax effect untuk header
+  const isDesktopParallax = window.matchMedia('(min-width: 769px)').matches
+
+  // Parallax effect untuk header (desktop only)
   const handleScroll = () => {
-    if (headerRef.value) {
+    if (isDesktopParallax && headerRef.value) {
       const scrolled = window.pageYOffset
-      const parallax = scrolled * 0.3
+      const parallax = scrolled * 0.16
       headerRef.value.style.transform = `translateY(${parallax}px)`
     }
   }
@@ -136,6 +138,24 @@ useHead({
     {
       name: 'keywords',
       content: 'kontak bengkel bubut, alamat bengkel bubut, WhatsApp bengkel bubut, jasa bubut logam'
+    }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://example.com/contact' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Bengkel Bubut Damai',
+        telephone: '+62 815-1728-1614',
+        address: locations.map((loc) => ({
+          '@type': 'PostalAddress',
+          streetAddress: loc.address
+        }))
+      })
     }
   ]
 })
@@ -424,6 +444,7 @@ useHead({
 @media (max-width: 768px) {
   .page-header {
     padding: 3rem 0;
+    transform: none !important;
   }
 
   .page-header h1 {
@@ -440,6 +461,11 @@ useHead({
 
   .cta-content h2 {
     font-size: 2rem;
+  }
+
+  .location-card:hover,
+  .info-item:hover {
+    transform: none;
   }
 }
 </style>

@@ -56,11 +56,14 @@
 const heroRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  // Parallax effect on scroll
+  const isDesktopParallax = window.matchMedia('(min-width: 769px)').matches
+  if (!isDesktopParallax) return
+
+  // Parallax effect on scroll (desktop only)
   const handleScroll = () => {
     if (heroRef.value) {
       const scrolled = window.pageYOffset
-      const parallax = scrolled * 0.5
+      const parallax = scrolled * 0.22
       heroRef.value.style.transform = `translateY(${parallax}px)`
     }
   }
@@ -82,6 +85,35 @@ useHead({
     {
       name: 'keywords',
       content: 'bengkel bubut, jasa bubut, bubut logam, bubut besi, bubut stainless, bubut custom, jasa bubut profesional'
+    },
+    {
+      property: 'og:title',
+      content: 'Bengkel Bubut Damai - Jasa Bubut Logam Profesional'
+    },
+    {
+      property: 'og:description',
+      content: 'Jasa bubut besi, stainless, custom part, dan repair komponen mesin untuk area lokal.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://example.com/' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Bengkel Bubut Damai',
+        description: 'Jasa bubut logam untuk kebutuhan industri dan custom part.',
+        areaServed: 'Jakarta',
+        telephone: '+62 815-1728-1614',
+        image: '/images/IMG20251210183956.jpg'
+      })
     }
   ]
 })
@@ -254,6 +286,8 @@ useHead({
 @media (max-width: 768px) {
   .hero {
     padding: 4rem 0;
+    min-height: auto;
+    transform: none !important;
   }
 
   .hero-title {

@@ -12,7 +12,7 @@ export interface Location {
 export const locations: Location[] = [
   {
     name: 'Bengkel Utama',
-    address: 'Kapuk Gg.Las',
+    address: 'Kapuk Raya GG las no 48 RT 005/RW 05 Jakarta Barat',
     latitude: -6.1385729,
     longitude: 106.7609745,
     phone: '6281517281614'

@@ -2,8 +2,9 @@
   <nav class="navbar">
     <div class="container">
       <div class="navbar-content">
-        <NuxtLink to="/" class="logo">
-          Bengkel Bubut Damai
+        <NuxtLink to="/" class="brand" aria-label="Bengkel Bubut Damai">
+          <img :src="logoUrl" class="brand-mark" alt="Logo Bengkel Bubut Damai" />
+          <span class="brand-text">Bengkel Bubut Damai</span>
         </NuxtLink>
         <ul class="nav-links">
           <li><NuxtLink to="/" active-class="active">Beranda</NuxtLink></li>
@@ -28,6 +29,8 @@
 </template>
 
 <script setup lang="ts">
+import logoUrl from '~/assets/images/logo/BengkelBubutDamai.png'
+
 const mobileMenuOpen = ref(false)
 
 const toggleMobileMenu = () => {
@@ -65,7 +68,10 @@ const closeMobileMenu = () => {
   align-items: center;
 }
 
-.logo {
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-size: 1.5rem;
   font-weight: 700;
   color: #e0e0e0;
@@ -74,9 +80,25 @@ const closeMobileMenu = () => {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.logo:hover {
+.brand:hover {
   color: #c0c0c0;
   text-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
+}
+
+.brand-mark {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.55));
+}
+
+.brand-text {
+  line-height: 1;
+  letter-spacing: 0.2px;
 }
 
 .nav-links {
@@ -85,6 +107,11 @@ const closeMobileMenu = () => {
   gap: 2rem;
   margin: 0;
   padding: 0;
+}
+
+/* hide mobile menu on desktop (prevents duplicate menus) */
+.nav-links.mobile {
+  display: none;
 }
 
 .nav-links a {
@@ -152,6 +179,15 @@ const closeMobileMenu = () => {
 
   .nav-links.mobile a {
     padding: 0.5rem 0;
+  }
+  .brand-text {
+    font-size: 1.05rem;
+  }
+
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+    border-radius: 0;
   }
 }
 </style>

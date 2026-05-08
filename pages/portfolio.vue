@@ -11,28 +11,28 @@
     <section class="portfolio-gallery">
       <div class="container">
         <div class="gallery-grid">
-          <div
+          <article
             v-for="(item, index) in portfolioItems"
             :key="index"
             class="portfolio-item"
             :style="{ animationDelay: `${index * 0.1}s` }"
           >
-            <div class="portfolio-image">
+            <figure class="portfolio-image">
               <img
                 :src="getImageUrl(item.image)"
-                :alt="item.title"
+                :alt="`${item.title} - Bengkel Bubut Damai`"
                 loading="lazy"
                 class="parallax-element"
                 @error="handleImageError"
               />
               <div class="image-overlay"></div>
-            </div>
+            </figure>
             <div class="portfolio-info">
-              <h3>{{ item.title }}</h3>
+              <h2>{{ item.title }}</h2>
               <p>{{ item.description }}</p>
               <span class="portfolio-category">{{ item.category }}</span>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -68,11 +68,13 @@ const handleImageError = (event: Event) => {
 }
 
 onMounted(() => {
-  // Parallax effect untuk header
+  const isDesktopParallax = window.matchMedia('(min-width: 769px)').matches
+
+  // Parallax effect untuk header (desktop only)
   const handleScroll = () => {
-    if (headerRef.value) {
+    if (isDesktopParallax && headerRef.value) {
       const scrolled = window.pageYOffset
-      const parallax = scrolled * 0.3
+      const parallax = scrolled * 0.16
       headerRef.value.style.transform = `translateY(${parallax}px)`
     }
   }
@@ -109,6 +111,25 @@ useHead({
     {
       name: 'keywords',
       content: 'portfolio bengkel bubut, hasil karya bubut, contoh pekerjaan bubut, bubut logam profesional'
+    }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://example.com/portfolio' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Portfolio Bengkel Bubut Damai',
+        mainEntity: portfolioItems.map((item) => ({
+          '@type': 'CreativeWork',
+          name: item.title,
+          description: item.description,
+          image: `/images/${item.image}`
+        }))
+      })
     }
   ]
 })
@@ -265,7 +286,7 @@ useHead({
   background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
 }
 
-.portfolio-info h3 {
+.portfolio-info h2 {
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
   color: #e0e0e0;
@@ -332,6 +353,7 @@ useHead({
 @media (max-width: 768px) {
   .page-header {
     padding: 3rem 0;
+    transform: none !important;
   }
 
   .page-header h1 {
@@ -344,6 +366,10 @@ useHead({
 
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+
+  .portfolio-item:hover {
+    transform: none;
   }
 
   .portfolio-cta {
