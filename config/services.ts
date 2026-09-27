@@ -1,0 +1,6 @@
+export const services = [
+ {title:'Gear & Komponen Transmisi',short:'Spesialisasi utama kami untuk komponen yang bekerja presisi.',description:'Pengerjaan gear dan komponen transmisi sesuai contoh, ukuran, atau kebutuhan proyek. Kirim foto dan detail komponen agar kami dapat mendiskusikan kelayakannya.',material:'Gear · Komponen transmisi',image:'9828a56927f5963c29937088f9df3ea1.webp'},
+ {title:'Custom Gear',short:'Pembuatan gear berdasarkan contoh atau spesifikasi.',description:'Pembuatan gear custom berdasarkan contoh komponen, ukuran, atau gambar kerja. Detail bentuk, material, dan lingkup pengerjaan dibahas terlebih dahulu.',material:'Sesuai spesifikasi gear',image:'98572a031ebdb0962648d1ff672db1e0.webp'},
+ {title:'Shaft, Keyway & Bushing',short:'Komponen pendukung dalam sistem transmisi.',description:'Pengerjaan shaft, keyway, dan bushing yang berkaitan dengan kebutuhan gear dan sistem transmisi. Kirim detail komponen untuk memulai konsultasi.',material:'Komponen transmisi',image:'IMG-20251219-WA0017.webp'},
+ {title:'Repair & Reconditioning',short:'Memulihkan gear dan komponen transmisi.',description:'Pemeriksaan dan perbaikan gear atau komponen transmisi berdasarkan kondisi aktual. Kelayakan perbaikan dan lingkup pekerjaan didiskusikan sebelum proses dimulai.',material:'Evaluasi kondisi komponen',image:'FB_IMG_1761235287664.webp'}
+]

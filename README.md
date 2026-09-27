@@ -1,105 +1,60 @@
-# Bengkel Bubut Damai - Website Promosi
+# Bengkel Bubut Damai — Industrial Premium
 
-Website statis promosi untuk Bengkel Bubut Damai menggunakan Nuxt 3, Vue 3 Composition API, dan TypeScript.
+Redesign project Nuxt 3 / Vue 3 / TypeScript. Palet charcoal–ivory dengan aksen kuningan, foto pekerjaan asli, dan empat halaman responsif. Positioning utama: spesialis gear dan komponen transmisi, custom gear, shaft, keyway, bushing, serta repair komponen. Tidak memerlukan database atau API key.
 
-## Fitur
+## Jalankan di Windows / macOS / Linux
 
-- ✅ Nuxt 3 dengan SSG (Static Site Generation)
-- ✅ TypeScript
-- ✅ SEO-friendly dengan meta tags
-- ✅ Responsive design (mobile-first)
-- ✅ 4 halaman: Home, Services, Portfolio, Contact
-- ✅ Komponen reusable: Navbar, Footer, WhatsApp Button
-- ✅ Integrasi WhatsApp untuk inquiry
-- ✅ Desain industrial yang clean
-
-## Instalasi
+Gunakan Node.js 22 LTS. Ekstrak ZIP, buka terminal di folder `bubutdamai` (folder yang berisi `package.json`), lalu:
 
 ```bash
-# Install dependencies
-npm install
-
-# Development server
+npm ci
 npm run dev
+```
 
-# Build untuk production
-npm run build
+Buka alamat localhost yang ditampilkan terminal (biasanya http://localhost:3000).
 
-# Generate static site
+## Build
+
+```bash
 npm run generate
 ```
 
-## Konfigurasi
+Hasil website statis ada di `.output/public`. Unggah isi folder tersebut ke hosting statis. Untuk Vercel gunakan build command `npm run generate` dan output directory `.output/public`. Domain existing tidak diubah atau dipublikasikan otomatis oleh revisi ini.
 
-### WhatsApp Number
-Edit file `components/WhatsAppButton.vue` dan ubah prop `phone` dengan nomor WhatsApp yang sebenarnya (format: 6281234567890 tanpa +).
+Untuk mode server Node gunakan `npm run build`, kemudian `node .output/server/index.mjs`.
 
-### Lokasi Bengkel (2 Lokasi dengan Pin Point)
-Edit file `config/locations.ts` untuk mengatur lokasi bengkel:
+## Fitur
 
-```typescript
-export const locations: Location[] = [
-  {
-    name: 'Bengkel Utama',
-    address: 'Alamat lengkap lokasi 1',
-    latitude: -6.9174639,  // Ganti dengan koordinat sebenarnya
-    longitude: 107.6098164, // Ganti dengan koordinat sebenarnya
-    phone: '6281517281614'
-  },
-  {
-    name: 'Bengkel Cabang',
-    address: 'Alamat lengkap lokasi 2',
-    latitude: -6.9200000,  // Ganti dengan koordinat sebenarnya
-    longitude: 107.6100000, // Ganti dengan koordinat sebenarnya
-    phone: '6281517281614'
-  }
-]
-```
+- Beranda dengan hero fotografi, ringkasan layanan, hasil pekerjaan pilihan, dan alur konsultasi.
+- Halaman layanan dengan contoh foto, tautan konsultasi sesuai layanan, dan FAQ.
+- Galeri 12 foto dengan filter kategori dan detail foto memakai native dialog. Escape menutup dialog.
+- Formulir kontak tervalidasi yang menyiapkan pesan WhatsApp. Pengguna tetap menekan Kirim di WhatsApp; website tidak menyimpan formulir atau mengirim pesan sendiri.
+- Dua lokasi dengan peta dan tautan petunjuk arah.
+- Navigasi mobile, skip link, focus indicator, dan dukungan reduced motion.
+- Meta SEO, canonical domain, Open Graph, sitemap, dan data terstruktur bisnis.
+- Foto WebP teroptimasi. Tiga file sumber yang berekstensi PNG ternyata HEIF sudah dikonversi agar foto yang ditampilkan kompatibel dengan browser.
 
-**Cara mendapatkan koordinat:**
-1. Buka Google Maps
-2. Klik kanan pada lokasi yang diinginkan
-3. Pilih koordinat (latitude, longitude)
-4. Salin dan paste ke file `config/locations.ts`
+## Mengubah konten
 
-Peta akan otomatis menampilkan pin point di lokasi yang ditentukan.
+| Bagian | File |
+| --- | --- |
+| Warna, layout, breakpoint | `assets/css/main.css` |
+| Nama / simbol merek header | `components/BrandLogo.vue` |
+| Layanan | `config/services.ts` |
+| Judul, kategori, deskripsi portofolio | `config/portfolio.ts` |
+| Alamat & koordinat | `config/locations.ts` |
+| Nomor WhatsApp tombol | `components/WhatsAppButton.vue` |
+| Nomor formulir & telepon | `pages/contact.vue`, `components/Footer.vue` |
+| Nomor dalam data SEO | `pages/index.vue` |
+| Jam operasional | `pages/contact.vue`, `components/Footer.vue` |
+| Domain canonical / OG | `composables/usePageSeo.ts` |
+| Sitemap & robots | `public/sitemap.xml`, `public/robots.txt` |
+| Foto hero | `public/images/hero.webp` |
 
-### SEO Meta Tags
-Setiap halaman sudah memiliki meta tags yang dapat disesuaikan di bagian `<script setup>` masing-masing page.
+Foto asli tetap disertakan sebagai arsip. Komponen website menggunakan versi `.webp`.
 
-## Struktur Project
+Nama dan deskripsi portofolio, nomor telepon, lokasi, dan jam buka berasal dari project awal. Periksa kembali kecocokan judul/material setiap foto sebelum publikasi. Tidak ditambahkan angka pelanggan, sertifikasi, testimoni, atau janji toleransi teknis yang belum dikonfirmasi.
 
-```
-web_bengkel/
-├── assets/
-│   └── css/
-│       └── main.css          # Global styles
-├── components/
-│   ├── Navbar.vue            # Navigation component
-│   ├── Footer.vue            # Footer component
-│   └── WhatsAppButton.vue    # WhatsApp CTA button
-├── config/
-│   └── locations.ts           # Konfigurasi lokasi bengkel (2 lokasi)
-├── layouts/
-│   └── default.vue           # Default layout
-├── pages/
-│   ├── index.vue             # Home page
-│   ├── services.vue          # Services page
-│   ├── portfolio.vue         # Portfolio page
-│   └── contact.vue           # Contact page
-├── nuxt.config.ts            # Nuxt configuration
-├── package.json
-└── tsconfig.json
-```
+## Validasi
 
-## Teknologi
-
-- Nuxt 3
-- Vue 3 (Composition API)
-- TypeScript
-- CSS (no framework)
-
-## Lisensi
-
-Private project
-
+Lihat `VALIDASI.md` untuk hasil pemeriksaan build dan interaksi.
